@@ -1,0 +1,225 @@
+2.  DML COMMANDS
+
+  a)  DML -INSERT
+
+                     Insert values in INVOICE database. 
+
+Value insertion................
+-> customer_id  10001, 10002, 10003 etc
+-> in_id   101,102, 103, etc
+-> name of city (calicut, ekm, tvm, etc..)
+-> some quantity should be less than 2
+-> product names....pen, pencil, soap, etc..
+-> some phone number should be null
+-> some price between 50 rs and 150 rs
+-> inv_date between 1st jan 2023 to 31st dec 2024
+-> some customers purchase more than 2 products
+
+mysql> insert into customer values(10001,'CR7','MUKKAM','EVM',984454350);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values(10002,'messi','town','tvm',984400350);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values(10003,'njr','puthiyappa','clt',754400350);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values(10004,'arun','thannur','gulf',874400350);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values(10005,'tharif','karnataka','omen',874400350);
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from customer;
++-------+--------+------------+------+-----------+
+| id    | name   | address    | city | ph_no     |
++-------+--------+------------+------+-----------+
+| 10001 | CR7    | MUKKAM     | EVM  | 984454350 |
+| 10002 | messi  | town       | tvm  | 984400350 |
+| 10003 | njr    | puthiyappa | clt  | 754400350 |
+| 10004 | arun   | thannur    | gulf | 874400350 |
+| 10005 | tharif | karnataka  | omen | 874400350 |
++-------+--------+------------+------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> insert into product values(1001,'pen',120);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values(1002,'pencil',500);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values(1003,'box',700);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values(1004,'combas',550);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values(1005,'book',300);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from product;
++------+--------+-------+
+| p_id | pname  | price |
++------+--------+-------+
+| 1001 | pen    |   120 |
+| 1002 | pencil |   500 |
+| 1003 | box    |   700 |
+| 1004 | combas |   550 |
+| 1005 | book   |   300 |
++------+--------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> insert into invoice_master values(101,10001,'2025-2-12');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into invoice_master values(102,10002,'2025-2-15');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into invoice_master values(103,10003,'2025-2-20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into invoice_master values(104,10004,'2025-2-25');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into invoice_master values(105,10005,'2025-2-27');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from invoice_master;
++--------+---------+------------+
+| inv_id | cust_id | inv_date   |
++--------+---------+------------+
+|    101 |   10001 | 2025-02-12 |
+|    102 |   10002 | 2025-02-15 |
+|    103 |   10003 | 2025-02-20 |
+|    104 |   10004 | 2025-02-25 |
+|    105 |   10005 | 2025-02-27 |
++--------+---------+------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into invoice_item values(101,1001,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into invoice_item values(102,1002,3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into invoice_item values(103,1003,5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into invoice_item values(104,1004,9);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into invoice_item values(105,1005,10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from invoice_item;
++--------+------+----------+
+| inv_id | p_id | quantity |
++--------+------+----------+
+|    101 | 1001 |        1 |
+|    102 | 1002 |        3 |
+|    103 | 1003 |        5 |
+|    104 | 1004 |        9 |
+|    105 | 1005 |       10 |
++--------+------+----------+
+5 rows in set (0.00 sec)
+
+
+b) DML - UPDATE 
+
+
+              1. Update the price of a particular product. 
+               
+               
+mysql> update product set price=150 where p_id=1004;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from product;
++------+--------+-------+
+| p_id | pname  | price |
++------+--------+-------+
+| 1001 | pen    |   120 |
+| 1002 | pencil |   500 |
+| 1003 | box    |   700 |
+| 1004 | combas |   150 |
+| 1005 | book   |   300 |
++------+--------+-------+
+5 rows in set (0.00 sec)
+
+mysql> update customer set city='kozhikode' where city='CLT';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customer;
++-------+--------+------------+-----------+-----------+
+| id    | name   | address    | city      | ph_no     |
++-------+--------+------------+-----------+-----------+
+| 10001 | CR7    | MUKKAM     | EVM       | 984454350 |
+| 10002 | messi  | town       | tvm       | 984400350 |
+| 10003 | njr    | puthiyappa | kozhikode | 754400350 |
+| 10004 | arun   | thannur    | gulf      | 874400350 |
+| 10005 | tharif | karnataka  | omen      | 874400350 |
++-------+--------+------------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+3. Update all prices with 2% of its original price. 
+
+mysql> update product set price=price*1.02;
+Query OK, 5 rows affected (0.00 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> select * from product;
++------+--------+-------+
+| p_id | pname  | price |
++------+--------+-------+
+| 1001 | pen    |   122 |
+| 1002 | pencil |   510 |
+| 1003 | box    |   714 |
+| 1004 | combas |   153 |
+| 1005 | book   |   306 |
++------+--------+-------+
+5 rows in set (0.00 sec)
+
+4. Change the address, city, phone number of a particular customer. 
+
+
+mysql> update customer set address='dubai', city='tamilnadu', ph_no='999987666'
+where id=10001;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customer;
++-------+--------+------------+-----------+-----------+
+| id    | name   | address    | city      | ph_no     |
++-------+--------+------------+-----------+-----------+
+| 10001 | CR7    | dubai      | tamilnadu | 999987666 |
+| 10002 | messi  | town       | tvm       | 984400350 |
+| 10003 | njr    | puthiyappa | kozhikode | 754400350 |
+| 10004 | arun   | thannur    | gulf      | 874400350 |
+| 10005 | tharif | karnataka  | omen      | 874400350 |
++-------+--------+------------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+5. Change the quantity of a purchased product of inv_id ‘101’
+
+mysql> update invoice_item set quantity=10 where inv_id=101;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from invoice_item;
++--------+------+----------+
+| inv_id | p_id | quantity |
++--------+------+----------+
+|    101 | 1001 |       10 |
+|    102 | 1002 |        3 |
+|    103 | 1003 |        5 |
+|    104 | 1004 |        9 |
+|    105 | 1005 |       10 |
++--------+------+----------+
+5 rows in set (0.00 sec)
+
+
+
+

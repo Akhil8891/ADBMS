@@ -3,7 +3,7 @@
 
 mysql> select pname,price from product where p_id in(select p_id from product);
 +--------+-------+
-| pname  | price |
+| pname  | price | 
 +--------+-------+
 | pen    |   122 |
 | pencil |   510 |

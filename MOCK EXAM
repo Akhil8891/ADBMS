@@ -5,7 +5,7 @@
     
     
     
-    
+     
     
     mysql> create table Departments (DeptID int, DeptName varchar(10), Location varchar(10));
 Query OK, 0 rows affected (0.01 sec)

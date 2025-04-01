@@ -168,3 +168,4 @@ mysql> select * from Employees where Salary>55000;
 1 row in set (0.00 sec)
 
 
+//VERIFIED

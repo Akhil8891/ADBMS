@@ -14,7 +14,7 @@ mysql> select P.pname,II.quantity from invoice_item II inner join product P on P
 | icecream  |        1 |
 +-----------+----------+
 7 rows in set (0.00 sec)
-
+     
 
 
 

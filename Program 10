@@ -4,7 +4,7 @@
 mysql> create table cust(id int,name varchar(15),address varchar(15),city varchar(10),ph_no int);
     -> //
 Query OK, 0 rows affected (0.02 sec)
-
+ 
 
 mysql> delimiter //
 mysql> create trigger cust_trigger

@@ -1,0 +1,69 @@
+1.      Write a MongoDB query to sort customer details in ascending order of their name.
+
+
+invoice> db.customer.find().sort({name: 1});
+[
+  {
+    _id: ObjectId('68075f3cdd711c4f68544ca7'),
+    id: 1,
+    name: 'arun',
+    email: 'arun123@gmail.com',
+    phone: '99087654',
+    city: 'tvm'
+  },
+  {
+    _id: ObjectId('68075f3cdd711c4f68544ca9'),
+    id: 3,
+    name: 'good',
+    email: 'good123@gmail.com',
+    phone: '99000054',
+    city: 'tsr'
+  }
+]
+
+
+2.      Write a MongoDB query to count number of customers in each city.
+
+invoice>  db.customer.aggregate([ { $group:{ _id: "$city", max_age: { $max: "$age" }, min_age: { $min: "$age" } } }] )
+[
+  { _id: 'tvm', max_age: null, min_age: null },
+  { _id: 'tsr', max_age: null, min_age: null }
+]
+
+
+
+
+3.      Write a MongoDB query to find minimum and maximum age in each city.
+
+invoice> db.customer.aggregate([ { $group:{ _id: "$city", max_age: { $max: "$age" }, min_age: { $min: "$age" } } }] )
+[
+  { _id: 'tsr', max_age: null, min_age: null },
+  { _id: 'tvm', max_age: null, min_age: null }
+]
+
+
+4.      Write a MongoDB query using the $match stage to retrieve all customer documents whose customer_name starts with the letter “S”.
+
+
+invoice> db.customer.aggregate([ { $match: { name: {$regex: /^s/ } } } ])
+[
+  {
+    _id: ObjectId('68075f3cdd711c4f68544ca9'),
+    id: 3,
+    name: 'salu',
+    email: 'good123@gmail.com',
+    phone: '99000054',
+    city: 'tsr'
+  }
+]
+
+
+5.      Write a query using $lookup to join CUSTOMER and PRODUCT collections and display only customer name, product name, and price.
+
+
+invoice> db.customer.aggregate([{$lookup:{from:"product", localField:"id", foreignField:"p_id", as:"product_details"}}, {$project: {_id:0, customerName: "$name", productName: {$arrayElemAt:["$product_details.name", 0]}, price: {$arrayElemAt: ["$product_details.price", 0]}}}])
+[
+  { customerName: 'arun', productName: 'manu', price: 20 },
+  { customerName: 'salu', productName: 'diary chocolate', price: 90 }
+]
+

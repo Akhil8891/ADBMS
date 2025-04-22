@@ -2,7 +2,7 @@
 
 
 
-
+ 
 
 mysql> delimiter //
 mysql> create procedure l_name(inout name_list varchar(4000))

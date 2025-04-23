@@ -67,3 +67,4 @@ invoice> db.customer.aggregate([{$lookup:{from:"product", localField:"id", forei
   { customerName: 'salu', productName: 'diary chocolate', price: 90 }
 ]
 
+//VERIFIED

@@ -72,4 +72,4 @@ invoice> db.customer.find({city:{$ne: 'tvm'}})
   }
 ]
 
-
+//VERIFIED

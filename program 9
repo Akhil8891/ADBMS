@@ -28,6 +28,6 @@ mysql> select pname,price,price_range(price) as price_range from Product; delimi
 | scale |  5.00 | low         |
 +-------+-------+-------------+
 4 rows in set (0.00 sec)
-
+ 
 //VERIFIED
 //copy
